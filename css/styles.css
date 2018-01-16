@@ -1,0 +1,17 @@
+.jumbotron h1 {
+  text-align: center;
+}
+
+#idx {
+  margin-left: 17.5em;
+  display: none;
+}
+
+#idx2 {
+  margin-left: 1em;
+  display: none;
+}
+
+#submitItem {
+  margin-left: 24em;
+}
