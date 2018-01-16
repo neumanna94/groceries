@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Groceries List</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Grocery List Generator</h1>
+        <button type="button" id="idx">Add another item</button>
+        <button type="button" id="idx2">Display in Array</button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Enter a list seperated by columns, or individual grocery elements.</h4>
+          <form id="groceryInput">
+            <div class="form-group">
+              <label for="item"><strong>Enter Grocery to Add:</strong></label>
+              <input id="item" class="form-control" type="text">
+            </div>
+            <button type="submit" id="submitItem">Display List</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
