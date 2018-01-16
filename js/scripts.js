@@ -1,50 +1,55 @@
 var allGroceryItems = [];
 
-function addItem(inputItem){
-  if(!checkDuplicate(inputItem)){
-    allGroceryItems.push(inputItem);
-  } else {
-    alert("Item is already in your grocery list.");
+var addToGlobal = function(inputArray){
+  inLength = inputArray.length;
+  var myNewArray = [];
+  for(i = 0; i < inLength; i ++){
+    myNewArray.push(inputArray[i]);
   }
+  return myNewArray;
 }
-//Checks for duplicate item in list.
-function checkDuplicate(inputItem){
-  var length = allGroceryItems.length;
+function addArrayToList(inputArray){
+  var length = inputArray.length;
   for(i = 0; i < length; i ++){
-    if(allGroceryItems[i].toString()=="inputItem");
-    return true;
+    allGroceryItems.push(inputArray[i]);
+    $("#outputList").append("<li>"+ allGroceryItems[i] + "</li>");
   }
-  return false;
 }
-function stringParser(inputString){
+function sortArray(inputArray){
+  inputArrayLength = inputArray.length;
+  var tempArray = [];
+  for(i =0; i < inputArrayLength; i ++){
+    var temp = inputArray[i];
+    temp = temp.charAt(0).toUpperCase() + temp.slice(1);
+    tempArray.push(temp);
+  }
+  return tempArray.sort();
+}
+function stringParser(randomInput){
   var temp = new Array();
-  temp = inputString.split(", ");
+  temp = randomInput.split(", ");
   return temp;
 }
-function addArrayToList(){
-  var length = allGroceryItems.length;
-  for(i = 0; i < length; i ++){
-    $("#outputList").prepend("<li>"+allGroceryItems[i] + "</li>");
-  }
-}
-function sortArray(){
-  checkDuplicate.sort();
-}
-function capitalizeElement(){
-  var length = allGroceryItems.length;
-  var temp;
-  var result;
-  for(i = 0; i < length; i ++){
-    temp = allGroceryItems[i].toString();
-    temp = temp.split(' ');
-    var tempLength = temp.length;
-    for(i = 0; i < tempLength; i ++){
-      result += temp[i].charAt(0).toUppercase() + " ";
-    }
-  }
+// function removeDuplicates(inputArray){
+//   var arrLength = inputArray.length;
+//   var currentValue;
+//   var outputArray = [];
+//
+//   for(i = 0; i < arrLength; i ++){
+//     currentValue = inputArray[i];
+//     for(j =0; j <arrLength; j ++){
+//       if(inputArray[j]===currentValue){
+//
+//       } else {
+//         outputArray.push(currentValue);
+//       }
+//     }
+//
+//   }
+//   console.log(outputArray);
+//   return outputArray;
+// }
 
-  }
-}
 function toggle() {
   $("#idx").toggle();
   $("#idx2").toggle();
@@ -52,16 +57,20 @@ function toggle() {
   $("#item").toggle();
   $("outputList").toggle();
 }
+function doEverything(inputItem){
+  toggle();
+  addArrayToList(addToGlobal(sortArray(stringParser(inputItem))));
+}
 $(document).ready(function(){
   $("#idx").click(function(){
     toggle();
   });
   $("#idx2").click(function(){
-    alert(groceries.toString());
+    alert(allGroceryItems.toString());
   });
-  $("form#criterion").submit(function(event) {
+  $("form#groceryInput").submit(function(event) {
     event.preventDefault();
-    toggle();
+    var item = $("#item").val();
+    doEverything(item);
   });
-
 });
